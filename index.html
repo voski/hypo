@@ -16,6 +16,8 @@
 	<script type="application/javascript" src="lib/menu.js"></script>
   <script type="application/javascript" src="lib/sketchObject.js"></script>
   <script type="application/javascript" src="lib/gradient.js"></script>
+  <script type="application/javascript" src="lib/viewport.js"></script>
+  <script type="application/javascript" src="lib/traceStore.js"></script>
   <script type="application/javascript" src="lib/rollingTracer.js"></script>
   <script type="application/javascript" src="lib/sketch.js"></script>
   <script type="application/javascript" src="lib/animator.js"></script>
@@ -76,15 +78,10 @@
 
 	var overlayCanvas = document.getElementById("overlay-canvas");
 	var traceCanvas = document.getElementById("trace-canvas");
-	var canvasEls = [overlayCanvas, traceCanvas];
-	canvasEls.forEach(function(canvas){
-		canvas.width = Ace.Sketch.DIM_X
-		canvas.height = Ace.Sketch.DIM_Y
-	})
 	var overlayCtx = overlayCanvas.getContext("2d");
 	var traceCtx = traceCanvas.getContext("2d");
   var sketch = Ace.sketch = new Ace.Sketch();
-	var animator = Ace.animator = new Ace.Animator(sketch, overlayCtx, traceCtx)
+	var animator = Ace.animator = new Ace.Animator(sketch, overlayCtx, traceCtx);
 	animator.start();
 	Ace.Menu.initialize(animator);
 })();

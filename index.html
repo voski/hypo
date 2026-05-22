@@ -17,7 +17,7 @@
   <script type="application/javascript" src="lib/sketchObject.js"></script>
   <script type="application/javascript" src="lib/gradient.js"></script>
   <script type="application/javascript" src="lib/viewport.js"></script>
-  <script type="application/javascript" src="lib/traceStore.js"></script>
+  <script type="application/javascript" src="lib/webglTraceRenderer.js"></script>
   <script type="application/javascript" src="lib/rollingTracer.js"></script>
   <script type="application/javascript" src="lib/sketch.js"></script>
   <script type="application/javascript" src="lib/animator.js"></script>
@@ -78,10 +78,9 @@
 
 	var overlayCanvas = document.getElementById("overlay-canvas");
 	var traceCanvas = document.getElementById("trace-canvas");
-	var overlayCtx = overlayCanvas.getContext("2d");
-	var traceCtx = traceCanvas.getContext("2d");
+	var overlayCtx = overlayCanvas.getContext("2d", { alpha: true });
   var sketch = Ace.sketch = new Ace.Sketch();
-	var animator = Ace.animator = new Ace.Animator(sketch, overlayCtx, traceCtx);
+	var animator = Ace.animator = new Ace.Animator(sketch, overlayCtx, traceCanvas);
 	animator.start();
 	Ace.Menu.initialize(animator);
 })();
